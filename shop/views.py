@@ -1,23 +1,21 @@
 from django.shortcuts import render
-from . import serializer
+from . import serializers
 from rest_framework.generics import ListAPIView
 from . import models
 from rest_framework import generics
-from .models import Client, ContactApplication, Statiy
-from .serializers import ClientSerializer, ClientFilter, AplicationSerializer
+from .models import Client, ContactApplication, Statiy, Discount,Faq, Email_account
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView,CreateAPIView
-from .models import Discount,Faq
-from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer, StatiySerializer
+from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer, StatiySerializer, EmailSerializer, ClientSerializer, ClientFilter, AplicationSerializer
 
 
 class FAQListAPIView(ListAPIView):
-    serializer_class = serializer.FAQSerializer
+    serializer_class = serializers.FAQSerializer
     queryset = models.Faq.objects.all()
 
 
 class ProductListAPIView(ListAPIView):
-    serializer_class = serializer.RepairSerializer
+    serializer_class = serializers.ProductListSerializer
     queryset = models.Product.objects.all()
 
 
@@ -25,11 +23,18 @@ class ContactApplicationCreateView(generics.CreateAPIView):
     queryset = ContactApplication.objects.all()
     serializer_class = AplicationSerializer
 
+class EmailCreateView(generics.CreateAPIView):
+    queryset = Email_account.objects.all()
+    serializer_class = EmailSerializer
+
 
 class CategoryListAPIView(ListAPIView):
-    serializer_class = serializer.CategorySerializer
+    serializer_class = serializers.CategorySerializer
     queryset = models.Category.objects.all()
 
+class CategoryListWithImage(ListAPIView):
+    serializer_class = serializers.CategorySerializer
+    queryset = models.Category.objects.all()
 
 class ClientListAPIView(generics.ListAPIView):
     queryset = Client.objects.all()

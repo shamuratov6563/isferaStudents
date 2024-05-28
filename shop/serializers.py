@@ -1,16 +1,63 @@
 from rest_framework import serializers
 from .models import Discount,Faq
-from rest_framework import serializers
-from .models import Client, ContactApplication, Statiy
+from .models import Client, ContactApplication, Email_account, Statiy
 import django_filters
+from . import models
+
+
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Category
+        fields = (
+            'id',
+            'name',
+            'image',
+        )
+class RepairSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Repair
+        fields = (
+            'id',
+            'title',
+            'min_price',
+            'repair_time',
+        )
+
+class ProductListSerializer(serializers.ModelSerializer):
+    repair = RepairSerializer()
+    class Meta:
+        model = models.Product
+        fields = (
+            'name',
+            'repair',
+        )
+
+
+class RepairSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Repair
+        fields = (
+            'id',
+            'title',
+            'min_price',
+            'repair_time',
+        )
+
+
+class FAQSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Faq
+        fields = '__all__'
+
 
 class DiscountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Discount
         fields = ['id', 'title', 'percentage', 'image', 'link']
-
-
-
 
 class FrequentlyAskedQuestionsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,3 +86,8 @@ class StatiySerializer(serializers.ModelSerializer):
     class Meta:
         model = Statiy
         fields = "__all__"
+
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Email_account
+        fields = ['email',]
