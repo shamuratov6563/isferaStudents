@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import serializer
+from . import serializers
 from rest_framework.generics import ListAPIView
 from . import models
 from rest_framework import generics
@@ -12,13 +12,13 @@ from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer
 
 
 class FAQListAPIView(ListAPIView):
-    serializer_class = serializer.FAQSerializer
+    serializer_class = serializers.FAQSerializer
     queryset = models.Faq.objects.all()
 
 
-class RepairListAPIView(ListAPIView):
-    serializer_class = serializer.RepairSerializer
-    queryset = models.Repair.objects.all()
+class ProductListAPIView(ListAPIView):
+    serializer_class = serializers.ProductListSerializer
+    queryset = models.Product.objects.all()
 
 
 class ContactApplicationCreateView(generics.CreateAPIView):
@@ -27,9 +27,12 @@ class ContactApplicationCreateView(generics.CreateAPIView):
 
 
 class CategoryListAPIView(ListAPIView):
-    serializer_class = serializer.CategorySerializer
+    serializer_class = serializers.CategorySerializer
     queryset = models.Category.objects.all()
 
+class CategoryListWithImage(ListAPIView):
+    serializer_class = serializers.CategorySerializer
+    queryset = models.Category.objects.all()
 
 class ClientListAPIView(generics.ListAPIView):
     queryset = Client.objects.all()

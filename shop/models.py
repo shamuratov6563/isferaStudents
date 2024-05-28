@@ -1,5 +1,9 @@
 from django.db import models
 
+class Repair(models.Model):
+    title = models.CharField(max_length=100)
+    min_price = models.DecimalField(max_digits=10, decimal_places=2,  null=True)
+    repair_time = models.CharField(max_length=100)
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -13,9 +17,11 @@ class Product(models.Model):
     delivery_cost = models.PositiveIntegerField()
     manufacturer = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    repair = models.ForeignKey(Repair, on_delete=models.PROTECT, null=True )
 
     def __str__(self) -> str:
         return self.name
+    
 
 
 class ProductImages(models.Model):
@@ -33,11 +39,7 @@ class ProductMemory(models.Model):
     memory = models.CharField(max_length=100)
 
 
-class Repair(models.Model):
-    title = models.CharField(max_length=100)
-    min_price = models.DecimalField(max_digits=10, decimal_places=2,  null=True)
-    repair_time = models.CharField(max_length=100)
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+
 
 
 class RepairApplication(models.Model):
