@@ -4,7 +4,7 @@ from rest_framework.generics import ListAPIView
 from . import models
 from rest_framework import generics
 from .models import Client, ContactApplication
-from .serializers import ClientSerializer, ClientFilter, AplicationSerializer
+from .serializers import ClientSerializer, ClientFilter, AplicationSerializer, RepairApplicationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -33,3 +33,8 @@ class ClientListAPIView(generics.ListAPIView):
     serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ClientFilter
+
+
+class RepairAppCreateAPIView(generics.CreateAPIView):
+    serializer_class = RepairApplicationSerializer
+    queryset = models.RepairApplication.objects.all()

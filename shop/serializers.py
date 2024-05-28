@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Client, ContactApplication
+from .models import Client, ContactApplication, RepairApplication
 import django_filters
 
 
@@ -17,4 +17,9 @@ class ClientSerializer(serializers.ModelSerializer):
 class AplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactApplication
+        fields = "__all__"
+
+class RepairApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RepairApplication
         fields = "__all__"
