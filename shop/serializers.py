@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Discount,Faq
 from rest_framework import serializers
-from .models import Client, ContactApplication
+from .models import Client, ContactApplication, Email_account
 import django_filters
 from . import models
 from rest_framework import serializers
@@ -81,3 +81,8 @@ class AplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactApplication
         fields = "__all__"
+
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Email_account
+        fields = ['email',]

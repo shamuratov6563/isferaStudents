@@ -14,5 +14,7 @@ urlpatterns = [
     path('discount-list/', views.DiscountListView.as_view()),
     path('discount-create/', views.DiscountCreateAPIView.as_view()),
     path('faq-create/', views.FaqCreateAPIView.as_view()),
+    path('email-create/', views.EmailCreateView.as_view()),
+
 ]
 
