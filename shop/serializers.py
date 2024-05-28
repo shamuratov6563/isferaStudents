@@ -1,7 +1,21 @@
 from rest_framework import serializers
+from .models import Discount,Faq
+from rest_framework import serializers
 from .models import Client, ContactApplication
 import django_filters
 
+class DiscountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Discount
+        fields = ['id', 'title', 'percentage', 'image', 'link']
+
+
+
+
+class FrequentlyAskedQuestionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Faq
+        fields = ['id', 'question', 'answer']
 
 class ClientFilter(django_filters.FilterSet):
     class Meta:
