@@ -35,7 +35,7 @@ class RepairSerializer(serializers.ModelSerializer):
 class FAQSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.FAQ
+        model = models.Faq
         fields = '__all__'
 
 

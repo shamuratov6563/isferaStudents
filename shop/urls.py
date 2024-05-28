@@ -5,10 +5,15 @@ from .views import ClientListAPIView, ContactApplicationCreateView
 
 
 urlpatterns = [
+    path('product-list/', views.ProductListAPIView.as_view()),
+    path('caregory-list/', views.CategoryListAPIView.as_view()),
     path('faq-list/', views.FAQListAPIView.as_view() ),
     path('repair-list/', views.RepairListAPIView.as_view()),
     path('category-list/', views.CategoryListAPIView.as_view()),
     path('clients/', ClientListAPIView.as_view()),
     path('contact/', ContactApplicationCreateView.as_view()),
+    path('discount-list/', views.DiscountListView.as_view()),
+    path('discount-create/', views.DiscountCreateAPIView.as_view()),
+    path('faq-create/', views.FaqCreateAPIView.as_view()),
 ]
 

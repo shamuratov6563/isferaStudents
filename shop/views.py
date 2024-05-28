@@ -6,11 +6,14 @@ from rest_framework import generics
 from .models import Client, ContactApplication
 from .serializers import ClientSerializer, ClientFilter, AplicationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.generics import ListAPIView,CreateAPIView
+from .models import Discount,Faq
+from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer
 
 
 class FAQListAPIView(ListAPIView):
     serializer_class = serializer.FAQSerializer
-    queryset = models.FAQ.objects.all()
+    queryset = models.Faq.objects.all()
 
 
 class RepairListAPIView(ListAPIView):
@@ -33,3 +36,20 @@ class ClientListAPIView(generics.ListAPIView):
     serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ClientFilter
+
+class DiscountListView(ListAPIView):
+    queryset = Discount.objects.all()
+    serializer_class = DiscountSerializer
+
+class DiscountCreateAPIView(CreateAPIView):
+    queryset = Discount.objects.all()
+    serializer_class = DiscountSerializer
+
+
+class FaqListView(ListAPIView):
+    queryset = Faq.objects.all()
+    serializer_class = FrequentlyAskedQuestionsSerializer
+
+class FaqCreateAPIView(CreateAPIView):
+    queryset = Faq.objects.all()
+    serializer_class = FrequentlyAskedQuestionsSerializer
