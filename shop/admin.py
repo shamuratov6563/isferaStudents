@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-# from .models import Client, ContactApplication, Discount
+from . import models
 
-# admin.site.register(Client)
-# admin.site.register(ContactApplication)
-# admin.site.register(Discount)
+admin.site.register(models.FAQ)
+admin.site.register(models.Repair)
+admin.site.register(models.Product)
+admin.site.register(models.Category)
