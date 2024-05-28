@@ -6,7 +6,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = (
-            'id'
+            'id',
             'name',
         )
 
@@ -14,7 +14,7 @@ class RepairSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Repair
         fields = (
-            'id'
+            'id',
             'title',
             'min_price',
             'repair_time',
