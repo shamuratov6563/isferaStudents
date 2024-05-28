@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Discount,Faq
 from rest_framework import serializers
-from .models import Client, ContactApplication
+from .models import Client, ContactApplication,Product
 import django_filters
 
 class DiscountSerializer(serializers.ModelSerializer):
@@ -32,3 +32,13 @@ class AplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactApplication
         fields = "__all__"
+
+class ProductFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['category', 'name']
+
+class ProductFilter(django_filters.FilterSet):
+    class Meta:
+        model = Product
+        fields = ['name']
