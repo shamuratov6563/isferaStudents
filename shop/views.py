@@ -13,9 +13,9 @@ class FAQListAPIView(ListAPIView):
     queryset = models.FAQ.objects.all()
 
 
-class ProductListAPIView(ListAPIView):
+class RepairListAPIView(ListAPIView):
     serializer_class = serializer.RepairSerializer
-    queryset = models.Product.objects.all()
+    queryset = models.Repair.objects.all()
 
 
 class ContactApplicationCreateView(generics.CreateAPIView):

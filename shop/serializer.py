@@ -6,28 +6,30 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = (
-            'id'
+            'id',
             'name',
         )
 
-class RepairSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Repair
-        fields = (
-            'id'
-            'title',
-            'min_price',
-            'repair_time',
-        )
-
 class ProductListSerializer(serializers.ModelSerializer):
-    repair = RepairSerializer()
     class Meta:
         model = models.Product
         fields = (    
             'name',
-            'repair',     
         )
+
+class RepairSerializer(serializers.ModelSerializer):
+    product = ProductListSerializer()
+    class Meta:
+        model = models.Repair
+        fields = (
+            'id',
+            'title',
+            'min_price',
+            'repair_time',
+            'product',
+        )
+
+
 
 
 class FAQSerializer(serializers.ModelSerializer):
