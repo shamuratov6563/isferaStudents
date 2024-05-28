@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-# from .models import Client, ContactApplication, Discount
+from .models import Discount,Faq
 
-# admin.site.register(Client)
-# admin.site.register(ContactApplication)
-# admin.site.register(Discount)
+
+admin.site.register(Discount)
+admin.site.register(Faq)
