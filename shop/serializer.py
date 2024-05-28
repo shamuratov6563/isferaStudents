@@ -9,6 +9,14 @@ class CategorySerializer(serializers.ModelSerializer):
             'id',
             'name',
         )
+class ProductListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Product
+        fields = (
+            'name',
+        )
+
 
 class RepairSerializer(serializers.ModelSerializer):
     product = ProductListSerializer()
