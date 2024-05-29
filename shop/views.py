@@ -3,12 +3,12 @@ from . import serializer
 from rest_framework.generics import ListAPIView
 from . import models
 from rest_framework import generics
-from .models import Client, ContactApplication
+from .models import Client, ContactApplication, Statiy
 from .serializers import ClientSerializer, ClientFilter, AplicationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView,CreateAPIView
 from .models import Discount,Faq
-from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer
+from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer, StatiySerializer
 
 
 class FAQListAPIView(ListAPIView):
@@ -53,3 +53,8 @@ class FaqListView(ListAPIView):
 class FaqCreateAPIView(CreateAPIView):
     queryset = Faq.objects.all()
     serializer_class = FrequentlyAskedQuestionsSerializer
+
+
+class StatiyListView(ListAPIView):
+    queryset = Statiy.objects.all()
+    serializer_class = StatiySerializer

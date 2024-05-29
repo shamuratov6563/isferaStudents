@@ -161,3 +161,16 @@ class Client(models.Model):
 
     def __str__(self):
         return f"{self.id}-{self.name}"
+
+
+
+class Statiy(models.Model):
+    title = models.CharField(max_length=400)
+    description = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='discount')
+
+    def __str__(self):
+        return f"{self.id}-{self.title}"
+    
+
+

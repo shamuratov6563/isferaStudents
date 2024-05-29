@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Discount,Faq
 from rest_framework import serializers
-from .models import Client, ContactApplication
+from .models import Client, ContactApplication, Statiy
 import django_filters
 
 class DiscountSerializer(serializers.ModelSerializer):
@@ -31,4 +31,11 @@ class ClientSerializer(serializers.ModelSerializer):
 class AplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactApplication
+        fields = "__all__"
+        
+        
+class StatiySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Statiy
         fields = "__all__"
