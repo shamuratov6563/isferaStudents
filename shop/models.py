@@ -108,9 +108,12 @@ class ProductInCart(models.Model):
         return f"{self.id}-{self.product}"
 
 
-class FAQ(models.Model):
+class Faq(models.Model):
     question = models.CharField(max_length=100)
-    answer = models.CharField(max_length=150)
+    answer = models.TextField()
+
+    def __str__(self) -> str:
+        return f"{self.id}-{self.question}"
 
 
 class Email_account(models.Model):
