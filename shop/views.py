@@ -77,6 +77,6 @@ class ProductListAPIView(ListAPIView):
     queryset = models.Product.objects.all()
     serializer_class = ProductListSerializer
 
-class ProductDetailAPIView(ListAPIView):
+class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset = models.Product.objects.all()
     serializer_class = ProductDetailSerializer
