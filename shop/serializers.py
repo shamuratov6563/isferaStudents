@@ -7,6 +7,7 @@ import django_filters
 from . import models
 
 
+
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -98,3 +99,32 @@ class RepairApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = RepairApplication
         fields = "__all__"
+
+
+class ProductMemorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ProductMemory
+        fields = ('id', 'memory', 'add_price')
+
+
+class ProductColorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ProductColor
+        exclude = ('product',)
+
+
+class ProductListSerializer(serializers.ModelSerializer):
+    poster = serializers.SerializerMethodField()
+    product_memories = ProductMemorySerializer(many=True)
+    product_colors = ProductColorSerializer(many=True)
+
+    def get_poster(self, obj):
+        if obj.product_images.first():
+            return obj.product_images.first().image_1.url
+        return None
+
+    class Meta:
+        model = models.Product
+        fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors')

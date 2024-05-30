@@ -25,17 +25,17 @@ class Product(models.Model):
 
 
 class ProductImages(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name="product_images")
     color = models.CharField(max_length=100)
     image_1 = models.ImageField(upload_to='products/')
     image_2 = models.ImageField(upload_to='products/')
     image_3 = models.ImageField(upload_to='products/')
-    add_price = models.DecimalField(max_digits=10, decimal_places=10)
+    add_price = models.DecimalField(max_digits=10, decimal_places=2)
 
 
 class ProductMemory(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    add_price = models.DecimalField(max_digits=10, decimal_places=10)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name='product_memories')
+    add_price = models.DecimalField(max_digits=10, decimal_places=2)
     memory = models.CharField(max_length=100)
 
 
@@ -175,5 +175,14 @@ class Statiy(models.Model):
     def __str__(self):
         return f"{self.id}-{self.title}"
     
+
+
+class ProductColor(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_colors')
+    add_price = models.DecimalField(max_digits=10, decimal_places=2)
+    color = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.product.name
 
 
