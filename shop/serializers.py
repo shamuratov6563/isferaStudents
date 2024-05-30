@@ -136,8 +136,11 @@ class ProductListSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors')
 
 class ProductDetailSerializer(serializers.ModelSerializer):
+    
     product_images = ProductImageSerializer(many = True)
+
     product_memories = ProductMemorySerializer(many=True)
+
     product_colors = ProductColorSerializer(many=True)
 
     
