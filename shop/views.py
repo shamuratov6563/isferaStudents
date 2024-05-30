@@ -7,7 +7,7 @@ from .models import Client, ContactApplication, Statiy, Discount,Faq, Email_acco
 from .serializers import ClientSerializer, ClientFilter, AplicationSerializer, RepairApplicationSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView,CreateAPIView
-from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer, StatiySerializer, EmailSerializer, ClientSerializer, ClientFilter, AplicationSerializer,  ProductListSerializer
+from .serializers import DiscountSerializer,FrequentlyAskedQuestionsSerializer, StatiySerializer, EmailSerializer, ClientSerializer, ClientFilter, AplicationSerializer,  ProductListSerializer, ProductDetailSerializer
 
 
 class FAQListAPIView(ListAPIView):
@@ -76,3 +76,8 @@ class StatiyListView(ListAPIView):
 class ProductListAPIView(ListAPIView):
     queryset = models.Product.objects.all()
     serializer_class = ProductListSerializer
+
+
+class ProductDetailListAPIView(ListAPIView):
+    queryset = models.Product.objects.all()
+    serializer_class = ProductDetailSerializer

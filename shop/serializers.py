@@ -128,3 +128,21 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Product
         fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors')
+
+
+class ProductDetailSerializer(serializers.ModelSerializer):
+    poster = serializers.SerializerMethodField()
+    product_memories = ProductMemorySerializer(many=True)
+    product_colors = ProductColorSerializer(many=True)
+
+    
+    def get_poster(self, obj):
+        if obj.product_images.first():
+            return obj.product_images.first().image_1.url
+        return None
+    
+    class Meta:
+        model = models.Product
+        exclude = ('repair',)
+
+    

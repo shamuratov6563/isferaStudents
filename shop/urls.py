@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from .views import ClientListAPIView, ContactApplicationCreateView, StatiyListView,RepairAppCreateAPIView
+from .views import ClientListAPIView, ContactApplicationCreateView, StatiyListView,RepairAppCreateAPIView, ProductDetailListAPIView
 
 
 urlpatterns = [
@@ -20,7 +20,8 @@ urlpatterns = [
     path('statiy-list/detail/<int:pk>', StatiyListView.as_view()),
     path('email-create/', views.EmailCreateView.as_view()),
 
-    path('products/', views.ProductListAPIView.as_view())
+    path('products/', views.ProductListAPIView.as_view()),
+    path('product-detail', views.ProductDetailListAPIView.as_view())
 
 ]
 
