@@ -188,6 +188,7 @@ class ProductColor(models.Model):
 
 class ProductInfoType(models.Model):
     name = models.CharField(max_length=100)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
 
 
 class ProductInfoData(models.Model):
