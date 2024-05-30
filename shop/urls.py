@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from .views import ClientListAPIView, ContactApplicationCreateView, StatiyListView
+from .views import ClientListAPIView, ContactApplicationCreateView, StatiyListView,RepairAppCreateAPIView
 
 
 urlpatterns = [
@@ -11,6 +11,8 @@ urlpatterns = [
     path('category-with-image/', views.CategoryListWithImage.as_view()),
     path('clients/', ClientListAPIView.as_view()),
     path('contact/', ContactApplicationCreateView.as_view()),
+    path('repair-app/', RepairAppCreateAPIView.as_view()),
+
     path('discount-list/', views.DiscountListView.as_view()),
     path('discount-create/', views.DiscountCreateAPIView.as_view()),
     path('faq-create/', views.FaqCreateAPIView.as_view()),

@@ -48,6 +48,7 @@ class RepairApplication(models.Model):
     repair = models.ForeignKey(Repair, on_delete=models.PROTECT)
 
 
+
 class ProductSet(models.Model):
     class SetType(models.TextChoices):
         VIP = 'vip', 'Vip'

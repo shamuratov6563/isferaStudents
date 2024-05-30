@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Discount,Faq
 from .models import Client, ContactApplication, Email_account, Statiy
+from rest_framework import serializers
+from .models import Client, ContactApplication, RepairApplication
 import django_filters
 from . import models
 
@@ -91,3 +93,8 @@ class EmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Email_account
         fields = ['email',]
+
+class RepairApplicationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RepairApplication
+        fields = "__all__"
