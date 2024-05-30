@@ -128,3 +128,14 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Product
         fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors')
+
+class ProductDetailSerializer(serializers.ModelSerializer):
+    product_images = ProductColorSerializer(many = True)
+    product_memories = ProductMemorySerializer(many=True)
+    product_colors = ProductColorSerializer(many=True)
+
+    
+
+    class Meta:
+        model = models.Product
+        fields = ('id', 'name', 'description', 'price', 'product_memories', 'product_colors','product_images')
