@@ -11,6 +11,6 @@ urlpatterns = [
     path('contact/', ContactApplicationCreateView.as_view()),
     path('discount-list/', views.DiscountListView.as_view()),
     path('faq-list/', views.FaqListView.as_view()),
-    path('product-filter-list/', views.ProductfilterListView.as_view()),  
+    path('product-filter-list/', ProductfilterListView.as_view()),  
 ]
 
