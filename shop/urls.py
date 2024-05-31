@@ -21,7 +21,7 @@ urlpatterns = [
     path('email-create/', views.EmailCreateView.as_view()),
 
     path('products/', views.ProductListAPIView.as_view()),
-    path('products/detail<int:pk>', views.ProductDetailAPIView.as_view())
+    path('products/detail/<int:pk>', views.ProductDetailAPIView.as_view())
 
 ]
 
