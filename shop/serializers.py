@@ -146,13 +146,20 @@ class ProductInfoDataSerializer(serializers.ModelSerializer):
         model = models.ProductInfoData
         fields = "__all__"
 
+# class ProductDetailSerializer(serializers.ModelSerializer):
+#     product_info_types = ProductInfoTypeSerializer(many=True, source='product_info_types')
+#     product_info_data = ProductInfoDataSerializer(many=True, source='product_info_data')
+#     product_images = ProductImageSerializer(many=True, source='product_images')
+#     product_memories = ProductMemorySerializer(many=True, source='product_memories')
+#     product_colors = ProductColorSerializer(many=True, source='product_colors')
+
+#     class Meta:
+#         model = models.Product
+#         fields = ('id', 'name', 'description', 'price', 'product_memories', 'product_colors', 'product_images', 'product_info_types', 'product_info_data')
+
 class ProductDetailSerializer(serializers.ModelSerializer):
-    product_info_types = ProductInfoTypeSerializer(many=True, source='product_info_types')
-    product_info_data = ProductInfoDataSerializer(many=True, source='product_info_data')
-    product_images = ProductImageSerializer(many=True, source='product_images')
-    product_memories = ProductMemorySerializer(many=True, source='product_memories')
-    product_colors = ProductColorSerializer(many=True, source='product_colors')
+    product_memories = serializers.ListSerializer(child=ProductMemorySerializer())
 
     class Meta:
         model = models.Product
-        fields = ('id', 'name', 'description', 'price', 'product_memories', 'product_colors', 'product_images', 'product_info_types', 'product_info_data')
+        fields = '__all__'
