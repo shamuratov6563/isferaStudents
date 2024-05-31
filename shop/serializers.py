@@ -144,4 +144,5 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Product
-        fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors', 'product_img',)
+        exclude = ('repair',)
+        # fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors', 'product_img',)
