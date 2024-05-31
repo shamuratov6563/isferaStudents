@@ -137,31 +137,22 @@ class ProductListSerializer(serializers.ModelSerializer):
 
 
 class ProductInfoTypeSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = models.ProductInfoType
         exclude = ('product',)
 
 class ProductInfoDataSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = models.ProductInfoData
         fields = "__all__"
 
 class ProductDetailSerializer(serializers.ModelSerializer):
-
-    product_InfoType = ProductInfoTypeSerializer(many = True)
-
-    product_InfoData = ProductInfoDataSerializer(many = True)
-
-    product_images = ProductImageSerializer(many = True)
-
-    product_memories = ProductMemorySerializer(many=True)
-    
-    product_colors = ProductColorSerializer(many=True)
-
-    
+    product_info_types = ProductInfoTypeSerializer(many=True, source='product_info_types')
+    product_info_data = ProductInfoDataSerializer(many=True, source='product_info_data')
+    product_images = ProductImageSerializer(many=True, source='product_images')
+    product_memories = ProductMemorySerializer(many=True, source='product_memories')
+    product_colors = ProductColorSerializer(many=True, source='product_colors')
 
     class Meta:
         model = models.Product
-        exclude = ("repair",)
+        fields = ('id', 'name', 'description', 'price', 'product_memories', 'product_colors', 'product_images', 'product_info_types', 'product_info_data')

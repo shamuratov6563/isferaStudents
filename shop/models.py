@@ -195,3 +195,4 @@ class ProductInfoData(models.Model):
     info_type = models.ForeignKey(ProductInfoType, on_delete=models.CASCADE)
     key = models.CharField(max_length=100)
     value = models.CharField(max_length=100)
+
