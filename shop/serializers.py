@@ -114,6 +114,12 @@ class ProductColorSerializer(serializers.ModelSerializer):
         model = models.ProductColor
         exclude = ('product',)
 
+class ProductImagesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ProductImages
+        exclude = ('product',)
+
 
 class ProductListSerializer(serializers.ModelSerializer):
     poster = serializers.SerializerMethodField()
@@ -128,3 +134,14 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Product
         fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors')
+        
+        
+        
+class ProductDetailSerializer(serializers.ModelSerializer):
+    product_memories = ProductMemorySerializer(many=True)
+    product_colors = ProductColorSerializer(many=True)
+    product_img = ProductImagesSerializer(many=True)
+    
+    class Meta:
+        model = models.Product
+        fields = ('id', 'name', 'description', 'price', 'poster', 'product_memories', 'product_colors', 'product_img',)

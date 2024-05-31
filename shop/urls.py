@@ -20,7 +20,8 @@ urlpatterns = [
     path('statiy-list/detail/<int:pk>', StatiyListView.as_view()),
     path('email-create/', views.EmailCreateView.as_view()),
 
-    path('products/', views.ProductListAPIView.as_view())
+    path('products/', views.ProductListAPIView.as_view()),
+    path('products/detail<int:pk>', views.ProductDetailAPIView.as_view())
 
 ]
 
